@@ -67,7 +67,7 @@ export default class Home extends React.Component<Props & {history: History}, St
         return (
             //const { location, push, goBack } = this.props.rootStore
             <div>
-                Welcome Chimp
+                Welcome
                 <br></br>
                 Root Identity : {this.getRootResource().identity} <br/>
                 <button onClick={() => history.replace('/profile')}>Go to Page2</button>
