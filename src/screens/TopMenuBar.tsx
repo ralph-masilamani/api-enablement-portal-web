@@ -2,7 +2,6 @@ import * as React from 'react';
 import { observer, inject } from 'mobx-react';
 import { History } from 'history';
 import classNames from 'classnames';
-import { compose } from 'recompose';
 import { withStyles, createStyles } from '@material-ui/core';
 import { withTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Route, HashRouter, Switch, BrowserRouter as Router, Link } from 'react-router-dom';
-
+import routes from './routes';
 import createHistory from 'history/createBrowserHistory';
 
 type Props = {
