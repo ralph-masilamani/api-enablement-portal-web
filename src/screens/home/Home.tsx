@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
 import { History } from 'history';
+import { Link } from 'react-router-dom';
 
 import RootStore from '../../model/store/RootStore';
 import {ResourceName} from '../../model/common/ResourceName';
@@ -69,7 +70,10 @@ export default class Home extends React.Component<Props & {history: History}, St
                 Welcome Chimp
                 <br></br>
                 Root Identity : {this.getRootResource().identity} <br/>
-                <button onClick={() => history.replace('/page2')}>Go to Page2</button>
+                <button onClick={() => history.replace('/profile')}>Go to Page2</button>
+
+                <Link to="/profile">page 2 via link</Link>
+
             </div>
         )
     }
