@@ -4,9 +4,6 @@ import { Route, HashRouter, Switch, BrowserRouter as Router, Link } from 'react-
 
 import createHistory from 'history/createBrowserHistory';
 
-import Home from '../screens/home/Home';
-import Page2 from '../screens/page2/Page2';
-
 type Props = {
 
 }
@@ -14,14 +11,18 @@ type Props = {
 export default class DefaultRouter extends React.Component<Props> {
 
     render () {
-        //const history = createHistory();
+        const history = createHistory();
         return (
-            <HashRouter>
                 <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/page2" component={Page2} />
+                    {routes.map((route) => (
+                        <Route
+                        exact
+                        key={route.path}
+                        path={route.path}
+                        component={route.component}
+                        />
+                    ))}
                 </Switch>
-            </HashRouter>
         )
     }
 }
