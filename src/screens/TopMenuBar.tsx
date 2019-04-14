@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { observer, inject } from 'mobx-react';
-import { History } from 'history';
+
 import classNames from 'classnames';
 import { withStyles, createStyles } from '@material-ui/core';
-import { withTheme } from '@material-ui/core/styles';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -25,8 +24,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
