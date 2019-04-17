@@ -1,9 +1,9 @@
 {
-  "name": "bantz-social-web",
+  "name": "api-enablement",
   "version": "0.1.0",
   "private": true,
   "start_url": ".",
-  "homepage": "https://bantz.social",
+  "homepage": "https://api-enablement",
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",

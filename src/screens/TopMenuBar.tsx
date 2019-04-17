@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { observer, inject } from 'mobx-react';
-import { History } from 'history';
+
 import classNames from 'classnames';
 import { withStyles, createStyles } from '@material-ui/core';
-import { withTheme } from '@material-ui/core/styles';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -25,8 +24,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
@@ -65,7 +62,7 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
         this.setState({ open: false });
     };
 
-    /* 
+
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({ auth: event.target.checked });
     };
@@ -77,46 +74,27 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
     handleClose = () => {
         this.setState({ anchorEl: null });
     };
-    */    
-
+     
     activeRoute(routeName: any) {
-        console.log('attepting to goto route ' + routeName);
         if (this.props.location) {
-            
             return this.props.location.pathname.indexOf(routeName) > -1 ? true : false;
         }
     }
 
-    /*
-    activeRoute2(routeName: any) {
-        //return this.props.history.replace('/page2') > -1 ? true : false;
-        this.props.history.replace('/page2');
-        return true;
-    }
-    */
-
     render () {
         const { classes, theme } = this.props;
-        const { auth, anchorEl, open } = this.state;
-        //const open = Boolean(anchorEl);
+        const { auth, anchorEl } = this.state;
+        const open = Boolean(anchorEl);
 
         return (
             <div className={classes.root}>
                 <CssBaseline />
-                {/* <FormGroup>
-                    <FormControlLabel
-                        control={
-                        <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-                        }
-                        label={auth ? 'Logout' : 'Login'}
-                    />
-                </FormGroup> */}
-        
                 <AppBar
                     position="fixed"
                     className={classes.appBar}
                     >
                     <Toolbar>
+                    {/* 
                     <IconButton
                         color="inherit"
                         aria-label="Open drawer"
@@ -125,10 +103,11 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
                         >
                         <MenuIcon />
                     </IconButton>
+                    */}
                     <Typography variant="h6" color="inherit" className={classes.grow}>
                         API ENABLEMENT
                     </Typography>
-                    {/* {auth && (
+                     {auth && (
                         <div>
                             <IconButton
                             aria-owns={open ? 'menu-appbar' : undefined}
@@ -156,7 +135,7 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
                             <MenuItem onClick={this.handleClose}>My account</MenuItem>
                             </Menu>
                         </div>
-                        )} */}
+                        )} 
                     </Toolbar>
                 </AppBar>
 
@@ -194,14 +173,14 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
                     })}
                     </List>
                     <Divider />
-                    <List>
+                    {/* <List>
                         {['All mail', 'Trash', 'Spam'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
                         ))}
-                    </List>
+                    </List> */}
                 </Drawer>                
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
@@ -247,10 +226,3 @@ const styles = (theme:any) => createStyles({
 
 const ShowTheLocationWithRouter = withRouter(TopMenuBar);
 export default withStyles(styles, { withTheme: true })(ShowTheLocationWithRouter)
-//export default withRouter(TopMenuBar)
-/*
-export default compose(
-    withRouter,
-    withStyles(styles, { withTheme: true }),
-)(TopMenuBar)
-*/

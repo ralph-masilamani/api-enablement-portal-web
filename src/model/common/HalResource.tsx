@@ -35,7 +35,6 @@ export class HalResource {
 }
 
 export class HalLink {
-
     constructor(
         public name: string,
         public href: string,
