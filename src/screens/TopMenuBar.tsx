@@ -62,7 +62,7 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
         this.setState({ open: false });
     };
 
-    /* 
+
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({ auth: event.target.checked });
     };
@@ -74,46 +74,27 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
     handleClose = () => {
         this.setState({ anchorEl: null });
     };
-    */    
-
+     
     activeRoute(routeName: any) {
-        console.log('attepting to goto route ' + routeName);
         if (this.props.location) {
-            
             return this.props.location.pathname.indexOf(routeName) > -1 ? true : false;
         }
     }
 
-    /*
-    activeRoute2(routeName: any) {
-        //return this.props.history.replace('/page2') > -1 ? true : false;
-        this.props.history.replace('/page2');
-        return true;
-    }
-    */
-
     render () {
         const { classes, theme } = this.props;
-        const { auth, anchorEl, open } = this.state;
-        //const open = Boolean(anchorEl);
+        const { auth, anchorEl } = this.state;
+        const open = Boolean(anchorEl);
 
         return (
             <div className={classes.root}>
                 <CssBaseline />
-                {/* <FormGroup>
-                    <FormControlLabel
-                        control={
-                        <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-                        }
-                        label={auth ? 'Logout' : 'Login'}
-                    />
-                </FormGroup> */}
-        
                 <AppBar
                     position="fixed"
                     className={classes.appBar}
                     >
                     <Toolbar>
+                    {/* 
                     <IconButton
                         color="inherit"
                         aria-label="Open drawer"
@@ -122,10 +103,11 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
                         >
                         <MenuIcon />
                     </IconButton>
+                    */}
                     <Typography variant="h6" color="inherit" className={classes.grow}>
                         API ENABLEMENT
                     </Typography>
-                    {/* {auth && (
+                     {auth && (
                         <div>
                             <IconButton
                             aria-owns={open ? 'menu-appbar' : undefined}
@@ -153,7 +135,7 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
                             <MenuItem onClick={this.handleClose}>My account</MenuItem>
                             </Menu>
                         </div>
-                        )} */}
+                        )} 
                     </Toolbar>
                 </AppBar>
 

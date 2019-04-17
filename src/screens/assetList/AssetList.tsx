@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
+import { computed } from 'mobx';
 import { withStyles, createStyles } from '@material-ui/core';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,6 +12,7 @@ import Paper from '@material-ui/core/Paper';
 import RootStore from '../../model/store/RootStore';
 import {ResourceName} from '../../model/common/ResourceName';
 import {HalResource} from '../../model/common/HalResource';
+import ProgressBar from '../../components/ProgressBar';
 
 type Nullable<T> = T | null;
 
@@ -21,7 +23,7 @@ type Props = {
 }
   
 type State = {
-      resourceName: ResourceName
+    resourceName: ResourceName
 }
   
 @inject('rootStore')
@@ -29,13 +31,27 @@ type State = {
 class AssetList extends React.Component<Props> {
 
     state = {
-        resourceName: ResourceName.PLATFORM_HOME
+        resourceName: ResourceName.PLATFORM_HOME,
     }
 
     componentDidMount() {
+        console.log('did mount ok loading= ' + this.isLoading)
         this.invokeFetch()
     }
     
+    @computed get
+    isLoading(): boolean {
+        if (this.props.rootStore) {
+            const loadingMap = this.props.rootStore.halStore.resourcesStatuses;
+            console.log('loading map ' + loadingMap)
+            const loadingStatus =  this.props.rootStore.halStore.resourcesStatuses.get('PLATFORM_HOME')
+            console.log('checking loading status ' + loadingStatus)
+            return loadingStatus == null ? true : loadingStatus
+        } else {
+            return true
+        }
+    }
+
     invokeFetch() {
 
         if (this.props.rootStore) {
@@ -69,7 +85,7 @@ class AssetList extends React.Component<Props> {
     render () {
         const { classes } = this.props;
         return (
-            
+            !this.isLoading ? 
             <Paper className={classes.root}>
             <Table className={classes.table}>
               <TableHead>
@@ -82,8 +98,9 @@ class AssetList extends React.Component<Props> {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {this.getEmbeddedList().map(row => (
-                  <TableRow key={row.identity}>
+                {this.getEmbeddedList().map((row, index) => (
+                  
+                  <TableRow key={index}>
                     <TableCell component="th" scope="row">
                       {row['startedAt']}
                     </TableCell>
@@ -95,7 +112,7 @@ class AssetList extends React.Component<Props> {
                 ))}
               </TableBody>
             </Table>
-          </Paper>
+          </Paper> : <ProgressBar/>
         )
     }
 }
