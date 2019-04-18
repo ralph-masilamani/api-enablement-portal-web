@@ -111,7 +111,9 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
                             onClose={this.handleClose}
                             >
                             <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                            <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                                <Link to="/home" style={{ textDecoration: 'none' }}>
+                                    <MenuItem>Logout</MenuItem>
+                                </Link>
                             </Menu>
                         </div>
                         )} 
