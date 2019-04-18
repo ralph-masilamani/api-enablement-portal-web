@@ -1,4 +1,4 @@
-import { Notifications, AccountCircle } from '@material-ui/icons';
+import { Notifications, AccountCircle, WebAsset, WebAssetTwoTone } from '@material-ui/icons';
 import Home from '../screens/home/Home';
 import Page2 from '../screens/page2/Page2';
 import AssetList from '../screens/assetList/AssetList'
@@ -21,7 +21,7 @@ const Routes: RouteConfig[] = [
         '/profile', 'Profile', 'Profile', AccountCircle, Page2
     ),
     new RouteConfig(
-        '/assetList', 'Asset List', 'Asset List', AccountCircle, AssetList
+        '/assetList', 'Asset List', 'Asset List', WebAssetTwoTone, AssetList
     )
 ]
 

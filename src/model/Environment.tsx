@@ -1,9 +1,9 @@
 
 export class EnvConfig {
 
-    public apiUrl: any
-    public homeUri: any
-    public baseApiUrl: string
+    apiUrl: any
+    homeUri: any
+    baseApiUrl: string
 
     constructor() {
         this.apiUrl = process.env.REACT_APP_BASE_API_URL;

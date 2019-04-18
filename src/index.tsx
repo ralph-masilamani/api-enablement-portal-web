@@ -17,9 +17,7 @@ const history = syncHistoryWithStore(browserHistory, rootStore.routingStore);
 
 ReactDOM.render(
   <Provider rootStore={rootStore}>
-    <Router
-       //forceRefresh={true}
-    >
+    <Router>
         <App />
     </Router>
   </Provider>,
