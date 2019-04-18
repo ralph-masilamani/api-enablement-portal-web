@@ -1,28 +1,35 @@
 import { Notifications, AccountCircle, WebAsset, WebAssetTwoTone } from '@material-ui/icons';
-import Home from '../screens/home/Home';
+import HomeLayout from '../components/layouts/HomeLayout';
+import DashboardLayout from '../components/layouts/DashboardLayout'
+
 import Page2 from '../screens/page2/Page2';
 import AssetList from '../screens/assetList/AssetList'
 
 export class RouteConfig {
     constructor(
         public path: string,
-        public sidebarName: string,
-        public navbarName: string,
-        public icon: any,
-        public component: any
+        public component: any,
+        public sidebarName?: string,
+        public navbarName?: string,
+        public icon?: any,
     ) {}
 }
 
-const Routes: RouteConfig[] = [
+export const LayoutRoutes: RouteConfig[] = [
     new RouteConfig(
-        '/home' ,'Home' ,'Home' ,Notifications , Home
+        '/home', HomeLayout
     ),
     new RouteConfig(
-        '/profile', 'Profile', 'Profile', AccountCircle, Page2
+        '/dashboard', DashboardLayout
     ),
-    new RouteConfig(
-        '/assetList', 'Asset List', 'Asset List', WebAssetTwoTone, AssetList
-    )
 ]
 
-export default Routes;
+export const DashboardRoutes: RouteConfig[] = [
+    
+    new RouteConfig(
+        '/dashboard/profile', Page2, 'Profile', 'Profile', AccountCircle
+    ),
+    new RouteConfig(
+        '/dashboard/assetList', AssetList, 'Asset List', 'Asset List', WebAssetTwoTone
+    )
+]

@@ -16,8 +16,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 
-import routes from '../router/routes';
-import DefaultRouter from '../router/router';
+import {DashboardRoutes} from '../router/Routes';
+import DashboardRouter from '../router/DashboardRouter';
 import RootStore from '../model/store/RootStore';
 
 const drawerWidth = 240;
@@ -130,7 +130,7 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
                    <div className={classes.toolbar} />
                     <Divider />
                     <List>
-                    {routes.map((prop, key) => {
+                    {DashboardRoutes.map((prop, key) => {
                         return (
                             <Link to={prop.path} style={{ textDecoration: 'none' }} key={key}>
                             <MenuItem selected={this.activeRoute(prop.path)}>
@@ -155,7 +155,7 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
                 </Drawer>                
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
-                    <DefaultRouter/>
+                    <DashboardRouter/>
                 </main>
             </div>
         )

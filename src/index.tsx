@@ -7,7 +7,6 @@ import { Provider } from 'mobx-react';
 import createBrowserHistory from 'history/createBrowserHistory';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 import RootStore from './model/store/RootStore';
-import DefaultRouter from './router/router';
 import App from './App';
 
 const rootStore: RootStore = new RootStore();
