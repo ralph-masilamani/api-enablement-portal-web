@@ -6,9 +6,9 @@ import {ResourceLinks} from '../common/ResourceLinks';
 import {SafeMap} from '../common/SafeMap';
 
 //TODO INJECT THIS IN ?
-export const apiUrl = 'http://localhost:9090';
+//export const apiUrl = 'http://localhost:9090';
 
-//export const apiUrl = 'http://54.194.81.99:9090';
+export const apiUrl = 'http://13.85.79.163:9090';
 
 export const environment = {
     baseApiUrl: apiUrl +'/platform/33333'
