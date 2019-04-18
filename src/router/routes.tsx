@@ -1,4 +1,3 @@
-import {Component} from 'react';
 import { Notifications, AccountCircle } from '@material-ui/icons';
 import Home from '../screens/home/Home';
 import Page2 from '../screens/page2/Page2';
