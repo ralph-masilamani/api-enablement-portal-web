@@ -94,16 +94,7 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
                     className={classes.appBar}
                     >
                     <Toolbar>
-                    {/* 
-                    <IconButton
-                        color="inherit"
-                        aria-label="Open drawer"
-                        onClick={this.handleDrawerOpen}
-                        className={classNames(classes.menuButton, open && classes.hide)}
-                        >
-                        <MenuIcon />
-                    </IconButton>
-                    */}
+                   
                     <Typography variant="h6" color="inherit" className={classes.grow}>
                         API ENABLEMENT
                     </Typography>
@@ -150,14 +141,6 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
                     >
                    <div className={classes.toolbar} />
                     <Divider />
-                    {/* <List>
-                        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem button key={text} selected={this.activeRoute2(text)}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                        ))}
-                    </List> */}
                     <List>
                     {routes.map((prop, key) => {
                         return (
@@ -199,8 +182,7 @@ const styles = (theme:any) => createStyles({
       flexGrow: 1,
     },
     appBar: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: drawerWidth,
+        zIndex: theme.zIndex.drawer + 1,
     },
     menuButton: {
       marginLeft: 12,
