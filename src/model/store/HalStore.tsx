@@ -4,15 +4,7 @@ import { ResourceName } from '../common/ResourceName';
 import TransportLayer from '../TransportLayer';
 import {ResourceLinks} from '../common/ResourceLinks';
 import {SafeMap} from '../common/SafeMap';
-
-//TODO INJECT THIS IN ?
-export const apiUrl = 'http://localhost:9090';
-
-//export const apiUrl = 'http://54.194.81.99:9090';
-
-export const environment = {
-    baseApiUrl: apiUrl +'/platform/33333'
-}
+import environment from '../Environment';
 
 type Nullable<T> = T | null;
 
@@ -32,6 +24,7 @@ export default class HalStore {
     @action setResource = (resourceKey: string, resource: Nullable<HalResource>) => { this.resources.set(resourceKey, resource); } 
 
     constructor(transportLayer: TransportLayer) {
+        console.log('configured to use base api url ', environment.baseApiUrl)
         this.transportLayer = transportLayer;
     }
 
