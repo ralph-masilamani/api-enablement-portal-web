@@ -4,6 +4,7 @@ import DashboardLayout from '../components/layouts/DashboardLayout'
 
 import Page2 from '../screens/page2/Page2';
 import AssetList from '../screens/assetList/AssetList'
+import AssetSummaryByType from '../screens/assetSummary/AssetSummaryByType'
 
 export class RouteConfig {
     constructor(
@@ -28,6 +29,9 @@ export const DashboardRoutes: RouteConfig[] = [
     
     new RouteConfig(
         '/dashboard/profile', Page2, 'Profile', 'Profile', AccountCircle
+    ),
+    new RouteConfig(
+        '/dashboard/assetSummaryByType', AssetSummaryByType, 'Assets By Type', 'Assets By Type', WebAssetTwoTone
     ),
     new RouteConfig(
         '/dashboard/assetList', AssetList, 'Asset List', 'Asset List', WebAssetTwoTone
