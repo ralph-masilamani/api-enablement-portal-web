@@ -4,9 +4,6 @@
 */
 export enum ResourceName {
     PLATFORM_HOME = "PLATFORM_HOME",
-    SIGN_UP_GOOGLE = "SIGN_UP_GOOGLE",
-    LOGIN = "LOGIN", 
+    SIGN_IN = "SIGNIN",
     USER_HOME = "USER_HOME",
-    USER_ACTIVITY = "USER_ACTIVITY",
-    USER_WALLET = "USER_WALLET",
 }

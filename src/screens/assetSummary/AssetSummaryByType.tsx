@@ -22,10 +22,6 @@ type Props = {
     theme: any
 }
   
-type State = {
-    resourceName: ResourceName
-}
-  
 interface AssesSummaryType {
     ByType: any[]
     ByGroupId: any[]
@@ -126,7 +122,7 @@ const styles = (theme:any) => createStyles({
       overflowX: 'auto',
     },
     table: {
-      minWidth: 700,
+      minWidth: 500,
     },
 });
 
