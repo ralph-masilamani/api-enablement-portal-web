@@ -37,6 +37,8 @@ export class Login extends React.Component<Props, State> {
             if (this.isAuthenticated == true) {
                 console.log('we are authenticated .. ')
                 this.doNavigate()
+            } else {
+                this.checkCallBack()
             }
         })
     }
@@ -70,21 +72,29 @@ export class Login extends React.Component<Props, State> {
         }
     }
 
+    checkCallBack() {
+        if (this.props.rootStore) {
+            const resp = this.props.rootStore.halStore.resources.get(this.state.resourceName)
+            console.log('check callback, sign in resp ' + resp);
+            if (resp) {
+                this.props.rootStore.authStore.setCurrentUser(resp, true);
+            }
+        }
+    }
+
     @computed get isAuthenticated(): boolean {
         
         if (this.props.rootStore) {
-            const resp = this.props.rootStore.halStore.resources.get(this.state.resourceName)
-            console.log('sign in resp ' + resp);
-            return resp ? true : false
-            //return false
-        } else {
-            return false
+            const resp = this.props.rootStore.authStore.isAuthenticated
+            console.log('we have isAuthenticated = ',resp)
+            return resp
         }
+        return false
     }
 
     doNavigate() {
         const history = this.props.history
-        history.replace('/dashboard/profile');
+        history.replace('/dashboard');
     }
 
     render () {

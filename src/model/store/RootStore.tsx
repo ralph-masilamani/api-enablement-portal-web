@@ -1,6 +1,8 @@
 import HalStore from "./HalStore";
 import TransportLayer from '../TransportLayer';
 import LocalStore from "./LocalStore";
+import AuthStore from "./AuthStore";
+
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
 
 /*
@@ -11,7 +13,7 @@ export default class RootStore{
 
     halStore: HalStore;
     localStore: LocalStore;
-    //authStore: AuthStore;
+    authStore: AuthStore;
     transportLayer: TransportLayer = new TransportLayer();
     routingStore: RouterStore
 
@@ -19,7 +21,7 @@ export default class RootStore{
         console.log('creating root store')
         this.halStore = new HalStore(this.transportLayer);
         this.localStore = new LocalStore();
-        //this.authStore = new AuthStore(this.halStore);
+        this.authStore = new AuthStore(this.halStore);
         this.routingStore = new RouterStore();
     }
 }

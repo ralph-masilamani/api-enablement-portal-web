@@ -83,7 +83,7 @@ export default class HalStore {
     }
 
     dealWithOk = (response: any, resourceKey: string, httpMethod: string) => {
-        console.log('HTTP ' + httpMethod + ' we got response ' + JSON.stringify(response.data))
+        //console.log('HTTP ' + httpMethod + ' we got response ' + JSON.stringify(response.data))
         let resource: HalResource = this.createHalResource(response.data);
         this.addNewLinksToMap(resource);
         this.setResource(resourceKey, resource);
