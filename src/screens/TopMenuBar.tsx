@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { observer, inject } from 'mobx-react';
 import { withStyles, createStyles } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -34,6 +34,8 @@ type State = {
     anchorEl: null | HTMLElement;
 }
 
+@inject('rootStore')
+@observer
 class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State> {
 
     state: State = {
@@ -50,7 +52,6 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
         this.setState({ open: false });
     };
 
-
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({ auth: event.target.checked });
     };
@@ -65,6 +66,10 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
     
     handleLogout = () => {
         const history = this.props.history
+        if (this.props.rootStore){
+            console.log('call logout')
+            this.props.rootStore.authStore.logout()
+        }
         history.replace('/home');
     }
 
