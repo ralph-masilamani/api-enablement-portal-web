@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { withStyles, createStyles } from '@material-ui/core';
+import { withRouter, RouteComponentProps} from 'react-router-dom';
 import TopMenuBar from '../../screens/TopMenuBar';
 
-type Props = {
+interface Props extends RouteComponentProps {
     classes: any
 }
 
-export class DashboardLayout extends React.Component<Props> {
+export class DashboardLayout extends React.Component<Props & RouteComponentProps> {
 
     render(){
         const { classes } = this.props;
@@ -29,4 +30,4 @@ const styles = (theme:any) => createStyles({
     },
 });
 
-export default withStyles(styles, { withTheme: true })(DashboardLayout)
+export default withRouter(withStyles(styles, { withTheme: true })(DashboardLayout))

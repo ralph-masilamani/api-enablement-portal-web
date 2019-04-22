@@ -62,7 +62,12 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
     handleClose = () => {
         this.setState({ anchorEl: null });
     };
-     
+    
+    handleLogout = () => {
+        const history = this.props.history
+        history.replace('/home');
+    }
+
     activeRoute(routeName: any) {
         if (this.props.location) {
             return this.props.location.pathname.indexOf(routeName) > -1 ? true : false;
@@ -111,9 +116,8 @@ class TopMenuBar extends React.Component<Props & RouteComponentProps<any>, State
                             onClose={this.handleClose}
                             >
                             <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                                <Link to="/home" style={{ textDecoration: 'none' }}>
-                                    <MenuItem>Logout</MenuItem>
-                                </Link>
+                            <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
+                               
                             </Menu>
                         </div>
                         )} 
@@ -196,5 +200,4 @@ const styles = (theme:any) => createStyles({
     },
 });
 
-const ShowTheLocationWithRouter = withRouter(TopMenuBar);
-export default withStyles(styles, { withTheme: true })(ShowTheLocationWithRouter)
+export default withRouter(withStyles(styles, { withTheme: true })(TopMenuBar))

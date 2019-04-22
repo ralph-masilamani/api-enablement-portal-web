@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
 import { computed } from 'mobx';
+import { withRouter, RouteComponentProps} from 'react-router-dom';
 import { withStyles, createStyles } from '@material-ui/core';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -16,7 +17,7 @@ import ProgressBar from '../../components/ProgressBar';
 
 type Nullable<T> = T | null;
 
-type Props = {
+interface Props extends RouteComponentProps {
     rootStore?: RootStore
     classes: any
     theme: any
@@ -55,7 +56,7 @@ class AssetSummaryByType extends React.Component<Props> {
     invokeFetch() {
 
         if (this.props.rootStore) {
-            console.log('ASSET Summary By Type attempting to get PLATFORM_HOME..');
+           console.log('ASSET Summary By Type attempting to get PLATFORM_HOME..');
            this.props.rootStore.halStore.getPlatformHome();
         }
     }
@@ -126,5 +127,5 @@ const styles = (theme:any) => createStyles({
     },
 });
 
-export default withStyles(styles, { withTheme: true })(AssetSummaryByType)
+export default withRouter(withStyles(styles, { withTheme: true })(AssetSummaryByType))
 

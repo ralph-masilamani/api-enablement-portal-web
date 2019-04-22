@@ -84,7 +84,7 @@ export class Login extends React.Component<Props, State> {
 
     doNavigate() {
         const history = this.props.history
-        history.replace('/dashboard');
+        history.replace('/dashboard/profile');
     }
 
     render () {

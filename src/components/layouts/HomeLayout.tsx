@@ -1,37 +1,21 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
+import { withRouter, RouteComponentProps} from 'react-router-dom';
 import { withStyles, createStyles } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-import Login from '../../screens/login/Login'
-import RootStore from '../../model/store/RootStore';
-import {ResourceName} from '../../model/common/ResourceName';
+import Login from '../../screens/login/Login';
+import ResourceLoader from '../loader/ResourceLoader';
 
-type Props = {
-    rootStore?: RootStore
+interface Props extends RouteComponentProps {
     classes: any
 }
 
-@inject('rootStore')
-@observer
 export class HomeLayout extends React.Component<Props> {
 
-    state = {
-        resourceName: ResourceName.PLATFORM_HOME,
-    }
-
     componentDidMount() {
-        //console.log('did mount ok loading= ' + this.isLoading)
-        this.invokeFetch()
-    }
-
-    invokeFetch() {
-
-        if (this.props.rootStore) {
-           console.log('HOME attempting to get PLATFORM_HOME..');
-           this.props.rootStore.halStore.getPlatformHome();
-        }
+        console.log('loadded HomeLayout ')
     }
 
     render(){
@@ -46,7 +30,7 @@ export class HomeLayout extends React.Component<Props> {
                     </Grid>
                     <Grid item xs={6}>
                         <Paper className={classes.paper}>
-                            SummaryList
+                            <ResourceLoader/>
                         </Paper>
                     </Grid>
                     <Grid item xs={6}>
@@ -71,4 +55,4 @@ const styles = (theme:any) => createStyles({
     },
 });
 
-export default withStyles(styles, { withTheme: true })(HomeLayout)
+export default withRouter(withStyles(styles, { withTheme: true })(HomeLayout))
