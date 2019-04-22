@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
 import { History } from 'history';
-import { Link } from 'react-router-dom';
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
 
 import RootStore from '../../model/store/RootStore';
 import {ResourceName} from '../../model/common/ResourceName';
@@ -9,7 +9,7 @@ import {HalResource} from '../../model/common/HalResource';
 
 type Nullable<T> = T | null;
 
-type Props = {
+interface Props extends RouteComponentProps {
   rootStore?: RootStore
 }
 
@@ -19,7 +19,7 @@ type State = {
 
 @inject('rootStore')
 @observer
-export default class Home extends React.Component<Props & {history: History}, State> {
+class Home extends React.Component<Props, State> {
 
     state = {
         resourceName: ResourceName.PLATFORM_HOME
@@ -33,7 +33,7 @@ export default class Home extends React.Component<Props & {history: History}, St
 
         if (this.props.rootStore) {
             console.log('attempting to get PLATFORM_HOME..');
-           this.props.rootStore.halStore.getPlatformHome();
+           //this.props.rootStore.halStore.getPlatformHome();
         }
     }
 
@@ -78,3 +78,5 @@ export default class Home extends React.Component<Props & {history: History}, St
         )
     }
 }
+
+export default withRouter(Home)
